@@ -1,7 +1,8 @@
 const jsdocApi = require('jsdoc-api')
 let dmd
 try {
-  dmd = require('dmd')
+  const mainDmd = process.env.JSDOC2MD_ROOT_DMD || 'dmd'
+  dmd = require(mainDmd)
 }
 catch (e) {}
 const DmdOptions = require('./lib/dmd-options')
