@@ -1,5 +1,9 @@
 const jsdocApi = require('jsdoc-api')
-const dmd = require('dmd')
+let dmd
+try {
+  dmd = require('dmd')
+}
+catch (e) {}
 const DmdOptions = require('./lib/dmd-options')
 const JsdocOptions = require('./lib/jsdoc-options')
 
@@ -14,6 +18,10 @@ const JsdocOptions = require('./lib/jsdoc-options')
  * @typicalname jsdoc2md
 */
 class JsdocToMarkdown {
+  constructor(dmd) {
+    this.dmd = dmd
+  }
+
   /**
    * Returns markdown documentation from jsdoc-annoted source code.
    *
@@ -46,10 +54,10 @@ class JsdocToMarkdown {
     options = options || {}
     const dmdOptions = new DmdOptions(options)
     if (options.data) {
-      return dmd.async(options.data, dmdOptions)
+      return this.dmd.async(options.data, dmdOptions)
     } else {
       return this.getTemplateData(options)
-        .then(templateData => dmd.async(templateData, dmdOptions))
+        .then(templateData => this.dmd.async(templateData, dmdOptions))
     }
   }
 
@@ -137,7 +145,7 @@ class JsdocToMarkdown {
    * @category async
    */
   clear () {
-    return jsdocApi.cache.clear().then(() => dmd.cache.clear())
+    return jsdocApi.cache.clear().then(() => this.dmd.cache.clear())
   }
 
   /**
@@ -166,4 +174,4 @@ class JsdocToMarkdown {
   }
 }
 
-module.exports = new JsdocToMarkdown()
+module.exports = new JsdocToMarkdown(dmd)

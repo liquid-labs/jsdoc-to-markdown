@@ -22,6 +22,11 @@ if (options.help) {
 } else {
   const jsdoc2md = require('../')
   jsdoc2md._interface = 'cli'
+  if (jsdoc2md.dmd === undefined) {
+    const mainPluginName = options.plugin.pop()
+    const mainPlugin = require(mainPluginName)
+    jsdoc2md.dmd = mainPlugin
+  }
 
   /* jsdoc2md --config */
   if (options.config) {
