@@ -9,6 +9,8 @@
 
 This is an fork of [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown) which add support for additional features and the ability to swap out the "root" plugin with another implementation. The goal is to be able support all the new features of [dmd-readme-api](https://github.com/liquid-labs/dmd-readme-api), which adds numerous features to generated documentation including grouping of global identifiers, source code links, links from documentation back to indexes, and a generally more compact style.
 
+See [dmd-readme-api](https://github.com/liquid-labs/dmd-readme-api) for usage.
+
 This package is being published because a number of my other projects rely on these changes. There are pull requests for all the changes and if/when they are incorporated into the original project, this one will be deprecated. On the other hand, if the changes are not adopted, then we will continue to maintain this fork.
 
 Generates markdown API documentation from [jsdoc](https://jsdoc.app) annotated source code. Useful for injecting API docs into project README files.
