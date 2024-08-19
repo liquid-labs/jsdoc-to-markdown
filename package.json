@@ -5,7 +5,7 @@
   "description": "Enhanced jsdoc2md to generate markdown API documentation from jsdoc annotated source code",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jsdoc2md/jsdoc-to-markdown.git"
+    "url": "git+https://github.com/liquid-labs/jsdoc-to-markdown.git"
   },
   "bin": {
     "jsdoc2md": "bin/cli.js"
