@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 import commandLineArgs from 'command-line-args'
 import commandLineUsage from 'command-line-usage'
-import jsdoc2md from 'jsdoc-to-markdown'
-import assert from 'assert'
+import jsdoc2md from '@liquid-labs/jsdoc-to-markdown'
 import fs from 'fs'
 import loadConfig from 'config-master'
 import cliData from '../lib/cli-data.js'
