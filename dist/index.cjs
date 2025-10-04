@@ -1,8 +1,29 @@
-import jsdocApi from 'jsdoc-api'
-import dmd from '@liquid-labs/dmd'
-import DmdOptions from './lib/dmd-options.js'
-import JsdocOptions from './lib/jsdoc-options.js'
-import jsdocParse from 'jsdoc-parse'
+'use strict';
+
+var jsdocApi = require('jsdoc-api');
+var dmd = require('@liquid-labs/dmd');
+var jsdocParse = require('jsdoc-parse');
+
+/**
+ * @typicalname options
+ */
+class DmdOptions {
+  constructor (options) {
+    Object.assign(this, options);
+    this.noCache = options['no-cache'];
+    delete this['no-cache'];
+  }
+}
+
+class JsdocOptions {
+  constructor (options) {
+    Object.assign(this, options);
+    this.cache = !options['no-cache'];
+    delete this['no-cache'];
+    /* Remove the dmd `template` option - it will break jsdoc-api if passed in as the `template` option must be a filename */
+    delete this.template;
+  }
+}
 
 /**
  * @module jsdoc-to-markdown
@@ -47,11 +68,11 @@ class JsdocToMarkdown {
    * ```
    */
   async render (options = {}) {
-    const dmdOptions = new DmdOptions(options)
+    const dmdOptions = new DmdOptions(options);
     if (options.data) {
       return dmd(options.data, dmdOptions)
     } else {
-      const templateData = await this.getTemplateData(options)
+      const templateData = await this.getTemplateData(options);
       return dmd(templateData, dmdOptions)
     }
   }
@@ -65,7 +86,7 @@ class JsdocToMarkdown {
    * @category async
    */
   async getTemplateData (options = {}) {
-    const jsdocData = await this.getJsdocData(options)
+    const jsdocData = await this.getJsdocData(options);
     return jsdocParse(jsdocData)
   }
 
@@ -82,7 +103,7 @@ class JsdocToMarkdown {
    * @category async
    */
   async getJsdocData (options) {
-    const jsdocOptions = new JsdocOptions(options)
+    const jsdocOptions = new JsdocOptions(options);
     return jsdocApi.explain(jsdocOptions)
   }
 
@@ -92,8 +113,8 @@ class JsdocToMarkdown {
    * @category async
    */
   async clear () {
-    await jsdocApi.cache.clear()
-    await dmd.cache.clear()
+    await jsdocApi.cache.clear();
+    await dmd.cache.clear();
   }
 
   /**
@@ -103,19 +124,21 @@ class JsdocToMarkdown {
    * @category async
    */
   async getNamepaths (options) {
-    const data = await this.getTemplateData(options)
-    const namepaths = {}
+    const data = await this.getTemplateData(options);
+    const namepaths = {};
     const kinds = [
       'module', 'class', 'constructor', 'mixin', 'member',
       'namespace', 'constant', 'function', 'event', 'typedef', 'external'
-    ]
+    ];
     for (const kind of kinds) {
       namepaths[kind] = data
         .filter(identifier => identifier.kind === kind)
-        .map(identifier => identifier.longname)
+        .map(identifier => identifier.longname);
     }
     return namepaths
   }
 }
 
-export default new JsdocToMarkdown()
+var index = new JsdocToMarkdown();
+
+module.exports = index;

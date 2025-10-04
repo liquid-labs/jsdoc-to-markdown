@@ -3,11 +3,10 @@
 [![Gihub repo dependents](https://badgen.net/github/dependents-repo/jsdoc2md/jsdoc-to-markdown)](https://github.com/jsdoc2md/jsdoc-to-markdown/network/dependents?dependent_type=REPOSITORY)
 [![Gihub package dependents](https://badgen.net/github/dependents-pkg/jsdoc2md/jsdoc-to-markdown)](https://github.com/jsdoc2md/jsdoc-to-markdown/network/dependents?dependent_type=PACKAGE)
 [![Node.js CI](https://github.com/jsdoc2md/jsdoc-to-markdown/actions/workflows/node.js.yml/badge.svg)](https://github.com/jsdoc2md/jsdoc-to-markdown/actions/workflows/node.js.yml)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 # @liquid-labs/jsdoc-to-markdown
 
-This is an fork of [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown) which add support for additional features and the ability to swap out the "root" plugin with another implementation. The goal is to be able support all the new features of [dmd-readme-api](https://github.com/liquid-labs/dmd-readme-api), which adds numerous features to generated documentation including grouping of global identifiers, source code links, links from documentation back to indexes, and a generally more compact style.
+This is a fork of [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown) which add support for additional features and the ability to swap out the "root" plugin with another implementation. The goal is to be able support all the new features of [dmd-readme-api](https://github.com/liquid-labs/dmd-readme-api), which adds numerous features to generated documentation including grouping of global identifiers, source code links, links from documentation back to indexes, and a generally more compact style.
 
 See [dmd-readme-api](https://github.com/liquid-labs/dmd-readme-api) for usage.
 
@@ -63,6 +62,4 @@ $ npm install --save-dev jsdoc-to-markdown
 
 * * *
 
-&copy; 2014-24 Lloyd Brookes \<75pound@gmail.com\>.
-
-Tested by [test-runner](https://github.com/test-runner-js/test-runner).
+&copy; 2014-25 Lloyd Brookes \<opensource@75lb.com\>.
