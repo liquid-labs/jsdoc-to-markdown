@@ -1,7 +1,7 @@
 {
   "name": "@liquid-labs/jsdoc-to-markdown",
   "author": "Lloyd Brookes, Zane Rockenbaungh <zane@liquid-labs.com>",
-  "version": "9.1.2",
+  "version": "9.1.3",
   "description": "Enhanced jsdoc2md to generate markdown API documentation from jsdoc annotated source code",
   "repository": {
     "type": "git",
